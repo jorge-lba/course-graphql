@@ -4,14 +4,22 @@ import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-co
 const server = new ApolloServer({
   typeDefs: gql`
     type Query {
-      hello: String
-      hi: String
+      id: ID!
+      name: String
+      age: Int
+      average: Float
+      married: Boolean
+      friends: [String!]
     }
   `,
   resolvers: {
     Query: {
-      hello: async () => 'Hello world!',
-      hi: async () => 'Hi world!',
+      id: () => '1fx2f3gdsg',
+      name: () => 'John Doe',
+      age: () => 42,
+      average: () => 51.14,
+      married: () => true,
+      friends: () => ['John', 'Jane', 'Jack'],
     },
   },
   plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
