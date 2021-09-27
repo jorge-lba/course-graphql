@@ -5,8 +5,15 @@ const server = new ApolloServer({
   typeDefs: gql`
     type Query {
       hello: String
+      hi: String
     }
   `,
+  resolvers: {
+    Query: {
+      hello: async () => 'Hello world!',
+      hi: async () => 'Hi world!',
+    },
+  },
   plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
 });
 
